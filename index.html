@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kata Bucin</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins', sans-serif;
+}
+
+/* ===== LOADING ===== */
+.loading{
+    position:fixed;
+    width:100%;
+    height:100%;
+    background:#0f0c29;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    z-index:9999;
+}
+
+.loader{
+    width:50px;
+    height:50px;
+    border:5px solid #fff;
+    border-top:5px solid #b993ff;
+    border-radius:50%;
+    animation:spin 1s linear infinite;
+}
+
+@keyframes spin{
+    100%{transform:rotate(360deg);}
+}
+
+/* ===== MAIN ===== */
+body{
+    min-height:100vh;
+    background:linear-gradient(135deg,#0f0c29,#302b63,#24243e);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+}
+
+.container{
+    max-width:500px;
+    width:100%;
+    background:rgba(255,255,255,0.08);
+    backdrop-filter:blur(10px);
+    border-radius:20px;
+    padding:30px;
+    color:#fff;
+    text-align:center;
+    animation:fade 1.5s ease;
+}
+
+@keyframes fade{
+    from{opacity:0; transform:translateY(20px);}
+    to{opacity:1; transform:translateY(0);}
+}
+
+h1{
+    font-size:28px;
+    margin-bottom:20px;
+    color:#b993ff;
+}
+
+.quote{
+    font-size:18px;
+    line-height:1.7;
+    margin-bottom:25px;
+    font-style:italic;
+}
+
+button{
+    padding:12px 30px;
+    border:none;
+    border-radius:50px;
+    background:#b993ff;
+    color:#000;
+    font-weight:600;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover{
+    background:#fff;
+    transform:scale(1.05);
+}
+
+.footer{
+    margin-top:20px;
+    font-size:12px;
+    opacity:0.7;
+}
+</style>
+</head>
+
+<body>
+
+<!-- LOADING -->
+<div class="loading" id="loading">
+    <div class="loader"></div>
+</div>
+
+<!-- CONTENT -->
+<div class="container">
+    <h1>💜 Kata Bucin 💜</h1>
+    <div class="quote" id="quote">
+        "Aku nggak butuh sempurna, aku cuma butuh kamu."
+    </div>
+    <button onclick="gantiKata()">Ganti Kata</button>
+    <div class="footer">Dibuat dengan cinta ✨</div>
+</div>
+
+<script>
+const kataBucin = [
+    "Aku nggak butuh sempurna, aku cuma butuh kamu.",
+    "Kalau aku rindu, itu tandanya aku cinta.",
+    "Kamu adalah rumah paling nyaman yang pernah aku temui.",
+    "Aku jatuh cinta, dan jatuhnya selalu ke kamu.",
+    "Tanpa kamu, senyumku nggak lengkap."
+];
+
+function gantiKata(){
+    const random = Math.floor(Math.random() * kataBucin.length);
+    document.getElementById("quote").innerText = kataBucin[random];
+}
+
+// Loading delay
+window.onload = function(){
+    setTimeout(()=>{
+        document.getElementById("loading").style.display="none";
+    },1500);
+}
+</script>
+
+</body>
+</html>
